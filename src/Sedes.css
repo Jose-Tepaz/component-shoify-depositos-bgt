@@ -1,0 +1,51 @@
+.WrappSedeSelect {
+    display: flex;
+    gap: 16px;
+    position: relative;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.WrappSedeSelect:hover {
+    background: #F5F6FD;
+}
+
+.WrappSedeSelect input {
+    position: absolute;
+    top: auto;
+    top: 26%;
+    left: 14px;
+    /* IE 9 */
+}
+
+input[type="radio"] {
+    -ms-transform: scale(1.4);
+    /* IE 9 */
+    -webkit-transform: scale(1.4);
+    /* Chrome, Safari, Opera */
+    transform: scale(1.4);
+}
+
+.TextSelect {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Neue montreal';
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 16px;
+    padding-left: 48px;
+    width: 100%;
+    border-radius: 16px;
+    color: #3C4549;
+}
+
+.TextSelect span {
+    font-family: 'Neue montreal';
+    font-size: 14px;
+    font-weight: 400;
+    color: #3C4549;
+}
+
+input:checked+span {
+    background: #e0e8fd69;
+}

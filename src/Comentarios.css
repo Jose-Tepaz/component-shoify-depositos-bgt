@@ -1,0 +1,96 @@
+.wrapp-tile-narrow {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    cursor: pointer;
+    align-items: center;
+}
+
+.imgArrow {
+    transform: rotate(0deg);
+    transition: 300ms ease-in;
+}
+
+.imgArrow--active {
+    transform: rotate(180deg);
+    transition: 300ms ease all;
+}
+
+.wrapp-input-text-area--hidde {
+    height: 0px;
+    opacity: 0;
+    transform: scaleY(0);
+    transition: 50ms ease all;
+}
+
+.wrapp-input-text-area {
+    padding-top: 16px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 1;
+    height: 100%;
+    transform: scaleY(1);
+    transition: 300ms ease all;
+}
+
+.text-area-input {
+    width: 100%;
+    border: 1.5px solid #D9D9D9;
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-family: 'Neue Montreal';
+    font-size: 18px;
+    color: #757575;
+    letter-spacing: 2%;
+}
+
+textarea:focus {
+    outline: none;
+    border: 1.5px solid #426fcd;
+}
+
+.guardarComents {
+    padding: 8px 16px;
+    border-radius: 24px;
+    border: 1px solid #000;
+    background: #FFF;
+    font-family: Neue Montreal;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    margin-top: 10px;
+    transition: 200ms ease-in;
+}
+
+.guardarComents:hover {
+    border-color: #426fcd;
+    color: #426fcd;
+}
+
+.wrapp-inpitMesaje {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.wrapp-inpitMesaje--hide {
+    display: none;
+}
+
+.editBtn {
+    display: block;
+    color: #1C83E3;
+    font-family: "Neue Montreal";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+    margin-top: 24px;
+}
+
+.editBtn--hidde {
+    display: none;
+}

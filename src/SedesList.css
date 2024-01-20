@@ -1,0 +1,19 @@
+.list-sedes ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.showdiv {
+    display: block;
+    margin-top: 8px;
+    padding: 48px;
+}
+
+.hiddendiv {
+    display: none;
+}

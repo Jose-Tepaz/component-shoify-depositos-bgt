@@ -1,0 +1,88 @@
+body {}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+    align-items: center;
+}
+
+.Wrapp-component {
+    padding: 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.card {
+    padding: 24px 32px;
+    border: 1px solid #e1e3e4;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+h3 {
+    font-family: 'Neue montreal';
+    color: #3C4549;
+    font-weight: 500;
+    font-size: 16px;
+    margin: 0px;
+}
+
+.nonInfo {
+    color: #757575;
+    font-family: Neue Montreal;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0px;
+}
+
+.ant-select {
+    height: 48px!important;
+}
+
+.ant-select-selector {
+    border-radius: 30px!important;
+    font-size: 18px!important;
+    color: #757575!important;
+    font-family: 'Neue Montreal'!important;
+}
+
+.ant-select-selection-search {
+    font-family: 'Neue Montreal';
+    font-size: 18px;
+    color: #757575;
+    letter-spacing: 2%;
+}
+
+.ant-select-item {
+    font-size: 18px!important;
+    color: #757575!important;
+    font-family: 'Neue Montreal'!important;
+}
+
+.ant-btn {
+    background: #426FCD;
+    border-radius: 100px;
+    padding: 16px 30px;
+    width: 100%;
+    border-style: none;
+    color: #fff;
+    font-family: 'Neue montreal';
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 200ms ease-in;
+    height: 54px;
+}
