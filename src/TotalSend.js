@@ -1,16 +1,21 @@
 import './TotalSend.css';
 
-//const totalsend = "5"
-function TotalSend () {
-    return (
-        <div>
-            <div className='wrapp-head-total'>
-            <p>Total a cotizar </p>
-            <p>{totalsend} productos</p>
-            </div>
-            
-        </div>
+const totalsend = "5"
+
+function TotalSend() {
+    return ( <
+        div >
+        <
+        div className = 'wrapp-head-total' >
+        <
+        p > Total a cotizar < /p> <
+        p > { totalsend }
+        productos < /p> <
+        /div>
+
+        <
+        /div>
     )
 }
-export {TotalSend};
-// <button className='BtnSend'>Pedir cotización</button> 
+export { TotalSend };
+// <button className='BtnSend'>Pedir cotización</button>

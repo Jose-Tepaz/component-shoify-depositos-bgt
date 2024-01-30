@@ -14,12 +14,13 @@ const listDespostos = async(state) => {
     });
 
     //console.log(peticion)
-    const clientes = peticion.data.records[0].fields.IdDeposito;
-    const nombreClientes = peticion.data.records[0].fields.NombreDeposito;
+    const clientes = peticion.data.records[0].fields;
+    const nombreClientes = peticion.data.records[0].fields.Nombre;
 
     state(clientes);
 
-    //console.log(peticion)
+
+    //console.log(nombreClientes)
 
 
 }

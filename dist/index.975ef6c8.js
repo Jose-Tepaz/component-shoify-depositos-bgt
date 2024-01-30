@@ -2953,8 +2953,11 @@ var _totalSend = require("./TotalSend");
 var _comentarios = require("./Comentarios");
 var _apicallasesores = require("./apicallasesores");
 var _apicalldepositos = require("./apicalldepositos");
+var _sendedata = require("./sendedata");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _indexCss = require("./index.css");
 var _antd = require("antd");
 var _s = $RefreshSig$();
@@ -2970,30 +2973,64 @@ const App = ()=>{
     const [searchValue, setSearchValue] = (0, _reactDefault.default).useState(null);
     //console.log('Este es el valor ' + searchValue);
     const [adressSelect, setAdressSelect] = (0, _reactDefault.default).useState(null);
-    const [clientSelect, setClientSelect] = (0, _reactDefault.default).useState(null);
-    //console.log(clientSelect);
-    //setea la direccion del deposito a buscar
+    const [clientSelect, setClientSelect] = (0, _reactDefault.default).useState([]);
+    const arrayCliebte = clientSelect.DireccionesDepositos;
+    const rfcClienteApi = clientSelect.RFC;
+    const telemarketingClienteApi = clientSelect.Telemarketing;
+    const emailClienteApi = clientSelect.Telemarketing;
     (0, _react.useEffect)(()=>{
-        (0, _apicalldepositos.listDirecciones)(setDirecciones, clientSelect);
+        setDirecciones(arrayCliebte);
+    });
+    const idDespotio = "1234578";
+    // --!! Esto se oculta cuando se manda a produccion !!--
+    const nuevosproducyos = [
+        "Producto de prueba uno",
+        "Producto de prueba dos",
+        "Producto de prueba tres"
+    ];
+    let converTbprouct = nuevosproducyos.map(function(element) {
+        return `<td>${element}</td>`;
+    });
+    const arrytostring = converTbprouct.toString();
+    const finalsend = arrytostring.replaceAll(",", "");
+    // !!--- Send POST data to Airtable ---!!
+    async function enviandoDatos() {
+        const response = await fetch("https://api.airtable.com/v0/appVwlmLP1164Ceku/tbl7q7V4X0euPXyyC", {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": "Bearer patRKAOUDaKjoM6c1.6564c9ab0b43954c74d0c41430eceb4a7f18a009249a22924ad944024e2d7446"
+            },
+            body: JSON.stringify({
+                "records": [
+                    {
+                        "fields": {
+                            "Idcliente": `${idDespotio}`,
+                            "DireccionDeposito": `${adressSelect}`,
+                            "Comentario": `${mesajeValue}`,
+                            "productos": `${finalsend}`,
+                            "Email": `${emailClienteApi}`,
+                            "RFC": `${rfcClienteApi}`,
+                            "emailTelemarketing": `${telemarketingClienteApi}`
+                        }
+                    }
+                ],
+                "typecast": true
+            })
+        });
+        console.log(response);
+    }
+    // !!--- End this script ---!! //
+    (0, _react.useEffect)(()=>{
+        (0, _apicalldepositos.listDirecciones)(setClientSelect);
     });
     //setea la lista de depositps del asesor
-    (0, _react.useEffect)(()=>{
-        (0, _apicallasesores.listDespostos)(setDepositos);
-    }, [
-        depositos
-    ]);
-    (0, _react.useEffect)(()=>{
-        const objectSend = {
-            idCliente: searchValue,
-            adressClient: adressSelect,
-            items: "item1"
-        };
-    //console.log(objectSend);
-    }, [
-        adressSelect
-    ]);
-    //direcciones.map 
-    //Load BTN
+    //useEffect(() => {
+    //    listDespostos(setDepositos);
+    //
+    //}, [depositos]);
+    // !!--- function to load BTN  ---!! //
     const [loadings, setLoadings] = (0, _react.useState)([]);
     const enterLoading = (index)=>{
         setLoadings((prevLoadings)=>{
@@ -3009,12 +3046,14 @@ const App = ()=>{
                     ...prevLoadings
                 ];
                 newLoadings[index] = false;
-                alert("Solicitud enviada con \xe9xito...");
-                location.reload();
+                //alert("Solicitud enviada con éxito...");
+                //sendData();
+                enviandoDatos();
                 return newLoadings;
             });
         }, 2000);
     };
+    // !!--- END function to load BTN  ---!! //
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "Wrapp-component",
@@ -3026,83 +3065,86 @@ const App = ()=>{
                         setMesajeValue: setMesajeValue
                     }, void 0, false, {
                         fileName: "src/index.js",
-                        lineNumber: 91,
+                        lineNumber: 144,
                         columnNumber: 17
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/index.js",
-                    lineNumber: 90,
-                    columnNumber: 17
+                    lineNumber: 143,
+                    columnNumber: 13
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                     className: "card",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sedesList.SedesList), {
                         direcciones: direcciones,
                         setDirecciones: setDirecciones,
-                        children: direcciones != null ? direcciones.map((direccion)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sedes.Sedes), {
-                                name: direccion,
-                                adressSelect: adressSelect,
-                                setAdressSelect: setAdressSelect
-                            }, direccion, false, {
+                        children: [
+                            direcciones != null ? direcciones.map((direccion)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sedes.Sedes), {
+                                    name: direccion,
+                                    adressSelect: adressSelect,
+                                    setAdressSelect: setAdressSelect
+                                }, direccion, false, {
+                                    fileName: "src/index.js",
+                                    lineNumber: 154,
+                                    columnNumber: 37
+                                }, undefined)) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                className: "nonInfo",
+                                children: " Introduce un ID de cliente para ver las direcciones disponibles "
+                            }, void 0, false, {
                                 fileName: "src/index.js",
-                                lineNumber: 106,
-                                columnNumber: 25
-                            }, undefined)) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                            className: "nonInfo",
-                            children: " Introduce un ID de cliente para ver las direcciones disponibles "
-                        }, void 0, false, {
-                            fileName: "src/index.js",
-                            lineNumber: 108,
-                            columnNumber: 26
-                        }, undefined)
-                    }, void 0, false, {
+                                lineNumber: 160,
+                                columnNumber: 34
+                            }, undefined),
+                            "                               "
+                        ]
+                    }, void 0, true, {
                         fileName: "src/index.js",
-                        lineNumber: 103,
-                        columnNumber: 17
+                        lineNumber: 151,
+                        columnNumber: 21
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/index.js",
-                    lineNumber: 97,
-                    columnNumber: 17
+                    lineNumber: 147,
+                    columnNumber: 13
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                     className: "card",
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _totalSend.TotalSend), {}, void 0, false, {
                             fileName: "src/index.js",
-                            lineNumber: 112,
-                            columnNumber: 17
+                            lineNumber: 164,
+                            columnNumber: 37
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _antd.Button), {
                             type: "primary",
                             loading: loadings[0],
                             onClick: ()=>enterLoading(0),
-                            children: "Pedir Cotizaci\xf3n"
+                            children: "Pedir Cotizaci\xf3n "
                         }, void 0, false, {
                             fileName: "src/index.js",
-                            lineNumber: 113,
-                            columnNumber: 17
+                            lineNumber: 165,
+                            columnNumber: 37
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/index.js",
-                    lineNumber: 111,
-                    columnNumber: 17
+                    lineNumber: 163,
+                    columnNumber: 25
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/index.js",
-            lineNumber: 87,
-            columnNumber: 13
+            lineNumber: 140,
+            columnNumber: 9
         }, undefined)
     }, void 0, false);
 };
-_s(App, "zqV7/D5ewUoAe+dxU5wMlAR2pUs=");
+_s(App, "IwEWuoA+uOA6kxUqx3mX3zVayw4=");
 _c = App;
 (0, _reactDomDefault.default).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/index.js",
-    lineNumber: 126,
-    columnNumber: 17
+    lineNumber: 178,
+    columnNumber: 18
 }, undefined), document.getElementById("root"));
 var _c;
 $RefreshReg$(_c, "App");
@@ -3112,7 +3154,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom":"j6uA9","./IdInput":"j8Nil","./Sedes":"7cLAx","./SedesList":"7vo8c","./TotalSend":"gQ1kC","./Comentarios":"PvCzL","./apicallasesores":"4Hw1M","./apicalldepositos":"5ACdr","react":"21dqq","./index.css":"irmnC","antd":"6C7kW","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom":"j6uA9","./IdInput":"j8Nil","./Sedes":"7cLAx","./SedesList":"7vo8c","./TotalSend":"gQ1kC","./Comentarios":"PvCzL","./apicallasesores":"4Hw1M","./apicalldepositos":"5ACdr","./sendedata":"f3LOR","react":"21dqq","axios":"jo6P5","./index.css":"irmnC","antd":"6C7kW","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("ee51401569654d91");
 
@@ -39496,43 +39538,46 @@ $parcel$ReactRefreshHelpers$29ab.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "TotalSend", ()=>TotalSend) // <button className='BtnSend'>Pedir cotización</button> 
+parcelHelpers.export(exports, "TotalSend", ()=>TotalSend) // <button className='BtnSend'>Pedir cotización</button>
 ;
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _totalSendCss = require("./TotalSend.css");
-//const totalsend = "5"
+const totalsend = "5";
 function TotalSend() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "wrapp-head-total",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                    children: "Total a cotizar "
+                    children: " Total a cotizar "
                 }, void 0, false, {
                     fileName: "src/TotalSend.js",
-                    lineNumber: 8,
-                    columnNumber: 13
+                    lineNumber: 10,
+                    columnNumber: 9
                 }, this),
+                " ",
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: [
+                        " ",
                         totalsend,
-                        " productos"
+                        "productos "
                     ]
                 }, void 0, true, {
                     fileName: "src/TotalSend.js",
-                    lineNumber: 9,
-                    columnNumber: 13
-                }, this)
+                    lineNumber: 11,
+                    columnNumber: 35
+                }, this),
+                " "
             ]
         }, void 0, true, {
             fileName: "src/TotalSend.js",
-            lineNumber: 7,
-            columnNumber: 13
+            lineNumber: 8,
+            columnNumber: 9
         }, this)
     }, void 0, false, {
         fileName: "src/TotalSend.js",
         lineNumber: 6,
-        columnNumber: 9
+        columnNumber: 14
     }, this);
 }
 _c = TotalSend;
@@ -39752,10 +39797,10 @@ const listDespostos = async (state)=>{
         }
     });
     //console.log(peticion)
-    const clientes = peticion.data.records[0].fields.IdDeposito;
-    const nombreClientes = peticion.data.records[0].fields.NombreDeposito;
+    const clientes = peticion.data.records[0].fields;
+    const nombreClientes = peticion.data.records[0].fields.Nombre;
     state(clientes);
-//console.log(peticion)
+//console.log(nombreClientes)
 };
 
 },{"axios":"jo6P5","micromatch":"aeGye","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jo6P5":[function(require,module,exports) {
@@ -49485,18 +49530,55 @@ parcelHelpers.export(exports, "listDirecciones", ()=>listDirecciones);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _micromatch = require("micromatch");
-//const idDespotio = "415689445";
-const listDirecciones = async (state)=>{
+//esto se oculta para mandar a produccion
+const idDespotio = "846541694";
+const listDirecciones = async (state, rfcno)=>{
     const peticion = await (0, _axiosDefault.default).get(`https://api.airtable.com/v0/appVwlmLP1164Ceku/tblgGAZYgdKhaKu7f?filterByFormula=Find(%22${idDespotio}%22%2C+IDcliente)`, {
         headers: {
             "Authorization": "Bearer patRKAOUDaKjoM6c1.6564c9ab0b43954c74d0c41430eceb4a7f18a009249a22924ad944024e2d7446"
         }
     });
-    const direcciones = peticion.data.records[0].fields.DireccionesDepositos;
+    //const direcciones = peticion.data.records[0].fields.DireccionesDepositos;
+    const direcciones = peticion.data.records[0].fields;
+    const rfc = peticion.data.records[0].fields.RFC;
     state(direcciones);
-//console.log(direcciones);
 };
 
-},{"axios":"jo6P5","micromatch":"aeGye","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"irmnC":[function() {},{}]},["icZzK","1xC6H","8lqZg"], "8lqZg", "parcelRequired59a")
+},{"axios":"jo6P5","micromatch":"aeGye","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"f3LOR":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "sendData", ()=>sendData);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
+const sendData = async ()=>{
+    try {
+        const peticion = await (0, _axiosDefault.default).post("https://api.airtable.com/v0/appVwlmLP1164Ceku/tbl7q7V4X0euPXyyC", {
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": "Bearer patRKAOUDaKjoM6c1.6564c9ab0b43954c74d0c41430eceb4a7f18a009249a22924ad944024e2d7446"
+            },
+            body: {
+                "records": [
+                    {
+                        "fields": {
+                            "Idcliente": "12345678",
+                            "DireccionDeposito": "Zacatecas #334",
+                            "Comentario": "No vi disponibilidd",
+                            "Email": "jose@acueducto.studio",
+                            "RFC": "SAOM720912J33"
+                        }
+                    }
+                ]
+            }
+        });
+        console.log(peticion);
+    } catch (error) {
+        console.log(error);
+    }
+//state(peticion);
+};
+
+},{"axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"irmnC":[function() {},{}]},["icZzK","1xC6H","8lqZg"], "8lqZg", "parcelRequired59a")
 
 //# sourceMappingURL=index.975ef6c8.js.map

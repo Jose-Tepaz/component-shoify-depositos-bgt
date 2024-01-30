@@ -9,7 +9,9 @@
     "name": "borgatta-shopify-cart-components",
     "version": "1.0.0",
     "source": "/src/index.html",
+    "type": "module",
     "dependencies": {
+        "@react-email/components": "0.0.14",
         "abortcontroller-polyfill": "^1.7.5",
         "ansi-styles": "^4.3.0",
         "antd": "^5.13.1",
@@ -87,9 +89,11 @@
         "posthtml-render": "^3.0.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-email": "^1.9.0",
         "react-error-overlay": "^6.0.9",
         "react-refresh": "^0.9.0",
         "regenerator-runtime": "^0.13.11",
+        "resend": "^3.1.0",
         "resolve-from": "^4.0.0",
         "safe-buffer": "^5.2.1",
         "semver": "^7.5.4",
@@ -111,7 +115,8 @@
     },
     "scripts": {
         "start": "parcel src/index.html",
-        "build": "parcel build"
+        "build": "parcel build",
+        "dev": "email dev "
     },
     "keywords": [],
     "author": "",
