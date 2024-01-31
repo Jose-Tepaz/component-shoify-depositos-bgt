@@ -2977,22 +2977,13 @@ const App = ()=>{
     const arrayCliebte = clientSelect.DireccionesDepositos;
     const rfcClienteApi = clientSelect.RFC;
     const telemarketingClienteApi = clientSelect.Telemarketing;
-    const emailClienteApi = clientSelect.Telemarketing;
+    const emailClienteApi = clientSelect.Email;
+    //console.log(rfcClienteApi, telemarketingClienteApi, emailClienteApi)
     (0, _react.useEffect)(()=>{
         setDirecciones(arrayCliebte);
     });
-    const idDespotio = "1234578";
-    // --!! Esto se oculta cuando se manda a produccion !!--
-    const nuevosproducyos = [
-        "Producto de prueba uno",
-        "Producto de prueba dos",
-        "Producto de prueba tres"
-    ];
-    let converTbprouct = nuevosproducyos.map(function(element) {
-        return `<td>${element}</td>`;
-    });
-    const arrytostring = converTbprouct.toString();
-    const finalsend = arrytostring.replaceAll(",", "");
+    //const idDespotio = "123456789";
+    //const finalsend = "algo nuevo";
     // !!--- Send POST data to Airtable ---!!
     async function enviandoDatos() {
         const response = await fetch("https://api.airtable.com/v0/appVwlmLP1164Ceku/tbl7q7V4X0euPXyyC", {
@@ -3025,11 +3016,6 @@ const App = ()=>{
     (0, _react.useEffect)(()=>{
         (0, _apicalldepositos.listDirecciones)(setClientSelect);
     });
-    //setea la lista de depositps del asesor
-    //useEffect(() => {
-    //    listDespostos(setDepositos);
-    //
-    //}, [depositos]);
     // !!--- function to load BTN  ---!! //
     const [loadings, setLoadings] = (0, _react.useState)([]);
     const enterLoading = (index)=>{
@@ -3047,7 +3033,6 @@ const App = ()=>{
                 ];
                 newLoadings[index] = false;
                 //alert("Solicitud enviada con éxito...");
-                //sendData();
                 enviandoDatos();
                 return newLoadings;
             });
@@ -3065,12 +3050,12 @@ const App = ()=>{
                         setMesajeValue: setMesajeValue
                     }, void 0, false, {
                         fileName: "src/index.js",
-                        lineNumber: 144,
+                        lineNumber: 118,
                         columnNumber: 17
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/index.js",
-                    lineNumber: 143,
+                    lineNumber: 117,
                     columnNumber: 13
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -3078,33 +3063,30 @@ const App = ()=>{
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sedesList.SedesList), {
                         direcciones: direcciones,
                         setDirecciones: setDirecciones,
-                        children: [
-                            direcciones != null ? direcciones.map((direccion)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sedes.Sedes), {
-                                    name: direccion,
-                                    adressSelect: adressSelect,
-                                    setAdressSelect: setAdressSelect
-                                }, direccion, false, {
-                                    fileName: "src/index.js",
-                                    lineNumber: 154,
-                                    columnNumber: 37
-                                }, undefined)) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                className: "nonInfo",
-                                children: " Introduce un ID de cliente para ver las direcciones disponibles "
-                            }, void 0, false, {
+                        children: direcciones != null ? direcciones.map((direccion)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sedes.Sedes), {
+                                name: direccion,
+                                adressSelect: adressSelect,
+                                setAdressSelect: setAdressSelect
+                            }, direccion, false, {
                                 fileName: "src/index.js",
-                                lineNumber: 160,
-                                columnNumber: 34
-                            }, undefined),
-                            "                               "
-                        ]
-                    }, void 0, true, {
+                                lineNumber: 127,
+                                columnNumber: 37
+                            }, undefined)) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                            className: "nonInfo",
+                            children: " Introduce un ID de cliente para ver las direcciones disponibles "
+                        }, void 0, false, {
+                            fileName: "src/index.js",
+                            lineNumber: 133,
+                            columnNumber: 34
+                        }, undefined)
+                    }, void 0, false, {
                         fileName: "src/index.js",
-                        lineNumber: 151,
+                        lineNumber: 124,
                         columnNumber: 21
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/index.js",
-                    lineNumber: 147,
+                    lineNumber: 121,
                     columnNumber: 13
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -3112,29 +3094,29 @@ const App = ()=>{
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _totalSend.TotalSend), {}, void 0, false, {
                             fileName: "src/index.js",
-                            lineNumber: 164,
+                            lineNumber: 137,
                             columnNumber: 37
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _antd.Button), {
                             type: "primary",
                             loading: loadings[0],
                             onClick: ()=>enterLoading(0),
-                            children: "Pedir Cotizaci\xf3n "
+                            children: "Pedir Cotizaci\xf3n"
                         }, void 0, false, {
                             fileName: "src/index.js",
-                            lineNumber: 165,
+                            lineNumber: 138,
                             columnNumber: 37
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/index.js",
-                    lineNumber: 163,
+                    lineNumber: 136,
                     columnNumber: 25
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/index.js",
-            lineNumber: 140,
+            lineNumber: 114,
             columnNumber: 9
         }, undefined)
     }, void 0, false);
@@ -3143,7 +3125,7 @@ _s(App, "IwEWuoA+uOA6kxUqx3mX3zVayw4=");
 _c = App;
 (0, _reactDomDefault.default).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/index.js",
-    lineNumber: 178,
+    lineNumber: 153,
     columnNumber: 18
 }, undefined), document.getElementById("root"));
 var _c;
@@ -39538,46 +39520,45 @@ $parcel$ReactRefreshHelpers$29ab.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "TotalSend", ()=>TotalSend) // <button className='BtnSend'>Pedir cotización</button>
+parcelHelpers.export(exports, "TotalSend", ()=>TotalSend) // <button className='BtnSend'>Pedir cotización</button> 
 ;
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _totalSendCss = require("./TotalSend.css");
-const totalsend = "5";
+// !!-- Se oculta al enviar a produccion --!
+//const totalsend = "5"
+// !!--------------------------!!//
 function TotalSend() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "wrapp-head-total",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                    children: " Total a cotizar "
+                    children: "Total a cotizar "
                 }, void 0, false, {
                     fileName: "src/TotalSend.js",
-                    lineNumber: 10,
-                    columnNumber: 9
+                    lineNumber: 11,
+                    columnNumber: 13
                 }, this),
-                " ",
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: [
-                        " ",
                         totalsend,
-                        "productos "
+                        " productos"
                     ]
                 }, void 0, true, {
                     fileName: "src/TotalSend.js",
-                    lineNumber: 11,
-                    columnNumber: 35
-                }, this),
-                " "
+                    lineNumber: 12,
+                    columnNumber: 13
+                }, this)
             ]
         }, void 0, true, {
             fileName: "src/TotalSend.js",
-            lineNumber: 8,
-            columnNumber: 9
+            lineNumber: 10,
+            columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "src/TotalSend.js",
-        lineNumber: 6,
-        columnNumber: 14
+        lineNumber: 9,
+        columnNumber: 9
     }, this);
 }
 _c = TotalSend;
@@ -49531,8 +49512,8 @@ var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _micromatch = require("micromatch");
 //esto se oculta para mandar a produccion
-const idDespotio = "846541694";
-const listDirecciones = async (state, rfcno)=>{
+//const idDespotio = "846541694";
+const listDirecciones = async (state)=>{
     const peticion = await (0, _axiosDefault.default).get(`https://api.airtable.com/v0/appVwlmLP1164Ceku/tblgGAZYgdKhaKu7f?filterByFormula=Find(%22${idDespotio}%22%2C+IDcliente)`, {
         headers: {
             "Authorization": "Bearer patRKAOUDaKjoM6c1.6564c9ab0b43954c74d0c41430eceb4a7f18a009249a22924ad944024e2d7446"
@@ -49540,7 +49521,6 @@ const listDirecciones = async (state, rfcno)=>{
     });
     //const direcciones = peticion.data.records[0].fields.DireccionesDepositos;
     const direcciones = peticion.data.records[0].fields;
-    const rfc = peticion.data.records[0].fields.RFC;
     state(direcciones);
 };
 

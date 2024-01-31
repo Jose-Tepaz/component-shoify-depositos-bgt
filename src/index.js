@@ -39,32 +39,18 @@ const App = () => {
     const arrayCliebte = clientSelect.DireccionesDepositos;
     const rfcClienteApi = clientSelect.RFC;
     const telemarketingClienteApi = clientSelect.Telemarketing;
-    const emailClienteApi = clientSelect.Telemarketing;
+    const emailClienteApi = clientSelect.Email;
+    //console.log(rfcClienteApi, telemarketingClienteApi, emailClienteApi)
    
-  
-    
   useEffect(() => {
     setDirecciones(arrayCliebte);
 }), [clientSelect]
 
 
-
-    const idDespotio = "1234578";
-
-    // --!! Esto se oculta cuando se manda a produccion !!--
-
-    const nuevosproducyos = [
-        'Producto de prueba uno',
-        'Producto de prueba dos',
-        'Producto de prueba tres',
-    ]
-    let converTbprouct = nuevosproducyos.map(function (element) {
-        return `<td>${element}</td>`;
-    });
-    const arrytostring = converTbprouct.toString();
-    const finalsend = arrytostring.replaceAll(",", "");
-  
-
+ 
+    //const idDespotio = "123456789";
+    //const finalsend = "algo nuevo";
+          
     // !!--- Send POST data to Airtable ---!!
     async function enviandoDatos() {
         const response = await fetch('https://api.airtable.com/v0/appVwlmLP1164Ceku/tbl7q7V4X0euPXyyC', {
@@ -97,16 +83,6 @@ const App = () => {
         listDirecciones(setClientSelect);
     });
 
-  
-
-    //setea la lista de depositps del asesor
-
-    //useEffect(() => {
-    //    listDespostos(setDepositos);
-//
-    //}, [depositos]);
-
-
 
     // !!--- function to load BTN  ---!! //
     const [loadings, setLoadings] = useState([]);
@@ -121,10 +97,8 @@ const App = () => {
             setLoadings((prevLoadings) => {
                 const newLoadings = [...prevLoadings];
                 newLoadings[index] = false;
-
                 //alert("Solicitud enviada con éxito...");
-                //sendData();
-
+                
                 enviandoDatos();
 
                 return newLoadings;
@@ -147,7 +121,6 @@ const App = () => {
             <div className='card'>
 { /* wrapp a list of address */}
 
-
                     <SedesList direcciones={direcciones}
                         setDirecciones={setDirecciones} > 
                         {direcciones != null ? (direcciones.map(direccion =>
@@ -157,8 +130,8 @@ const App = () => {
                                         setAdressSelect={setAdressSelect}
                                     />
                                 )
-                            ) : (<p className='nonInfo'> Introduce un ID de cliente para ver las direcciones disponibles </p>) }                               < /
-                        SedesList> 
+                            ) : (<p className='nonInfo'> Introduce un ID de cliente para ver las direcciones disponibles </p>) }                               
+                        </SedesList> 
                         </div> 
                         <div className='card'>
                                     <TotalSend />
@@ -167,8 +140,10 @@ const App = () => {
                                         loading={loadings[0]}
                                         onClick={
                                             () => enterLoading(0)
-                                        } >
-                                        Pedir Cotización </Button> 
+                                        }
+                                        >
+                                        Pedir Cotización 
+                                        </Button> 
                         </div > 
                         </div> 
                         </>
