@@ -7,12 +7,15 @@ import { Comentarios } from './Comentarios';
 import { listDespostos } from './apicallasesores';
 import { listDirecciones } from './apicalldepositos'
 import { sendData } from './sendedata';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import './index.css';
-import { Button, Spin } from 'antd';
+import { Button, Modal } from 'antd';
 
 
 
@@ -26,7 +29,7 @@ const App = () => {
     //console.log(direcciones);
 
     //Mesaje value
-    const [mesajeValue, setMesajeValue] = React.useState(null);
+    const [mesajeValue, setMesajeValue] = React.useState("No hay comentarios");
     //console.log(mesajeValue);
 
     const [searchValue, setSearchValue] = React.useState(null);
@@ -35,6 +38,10 @@ const App = () => {
     const [adressSelect, setAdressSelect] = React.useState(null);
 
     const [clientSelect, setClientSelect] = React.useState([]);
+
+    //Estado que activa el botón
+    const [activeBtn, setActiveBtn] = React.useState(true);
+
 
     const arrayCliebte = clientSelect.DireccionesDepositos;
     const rfcClienteApi = clientSelect.RFC;
@@ -47,7 +54,7 @@ const App = () => {
 }), [clientSelect]
 
 
- 
+ //ocultar al enviar a produccion
     //const idDespotio = "123456789";
     //const finalsend = "algo nuevo";
           
@@ -75,13 +82,17 @@ const App = () => {
                 "typecast": true
             })
         });
-        console.log(response);
+        //console.log(response);
     }
 
     // !!--- End this script ---!! //
+
+    
     useEffect(() => {
         listDirecciones(setClientSelect);
     });
+
+    
 
 
     // !!--- function to load BTN  ---!! //
@@ -98,17 +109,30 @@ const App = () => {
                 const newLoadings = [...prevLoadings];
                 newLoadings[index] = false;
                 //alert("Solicitud enviada con éxito...");
-                
                 enviandoDatos();
-
+                mostrarAlerta();
                 return newLoadings;
             });
         }, 2000);
     };
 
     // !!--- END function to load BTN  ---!! //
-
-
+    //modal de confirmación
+    const mostrarAlerta=()=>{
+        Swal.fire({
+        title: "Cotizacion solicitada con éxito",
+        icon: "success",
+        confirmButtonText: `Volver al inicio`,
+        customClass: {
+            confirmButton: 'btn-siguiente',
+            popup: 'popAlert',
+            title: 'titlePopup',
+        }
+    }).then((result) => {
+        window.location = '/';
+    });
+    }
+ 
     return (
         <>
         <div className='Wrapp-component' >
@@ -125,6 +149,8 @@ const App = () => {
                         setDirecciones={setDirecciones} > 
                         {direcciones != null ? (direcciones.map(direccion =>
                                     <Sedes key={direccion}
+                                        isActive={activeBtn}
+                                        setIsActive={setActiveBtn}
                                         name={direccion}
                                         adressSelect={adressSelect}
                                         setAdressSelect={setAdressSelect}
@@ -137,15 +163,17 @@ const App = () => {
                                     <TotalSend />
                                     <Button
                                         type="primary"
+                                        disabled = {activeBtn}
                                         loading={loadings[0]}
                                         onClick={
-                                            () => enterLoading(0)
+                                            () => enterLoading(0)                                       
                                         }
                                         >
                                         Pedir Cotización 
                                         </Button> 
                         </div > 
                         </div> 
+                        
                         </>
                                         )
                 }

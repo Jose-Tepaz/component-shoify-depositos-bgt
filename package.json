@@ -103,6 +103,8 @@
         "stable": "^0.1.8",
         "supports-color": "^7.2.0",
         "svgo": "^3.1.0",
+        "sweetalert2": "^11.10.4",
+        "sweetalert2-react-content": "^5.0.7",
         "term-size": "^2.2.1",
         "timsort": "^0.3.0",
         "to-regex-range": "^5.0.1",

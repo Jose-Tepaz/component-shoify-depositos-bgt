@@ -86,3 +86,26 @@ h3 {
     transition: 200ms ease-in;
     height: 54px;
 }
+
+.btn-siguiente {
+    background: #426fcd!important;
+    padding: 14px 32px;
+    border-radius: 30px!important;
+    font-size: 18px!important;
+    border-style: none!important;
+}
+
+.btn-siguiente:hover {
+    background: #4975d4!important;
+}
+
+.popAlert {
+    border-radius: 30px;
+}
+
+.titlePopup {
+    font-size: 30px!important;
+    font-family: 'Neue montreal';
+    font-weight: 500;
+    color: #3C4449;
+}

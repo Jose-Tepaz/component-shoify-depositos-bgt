@@ -62,6 +62,7 @@ textarea:focus {
     font-weight: 500;
     margin-top: 10px;
     transition: 200ms ease-in;
+    cursor: pointer;
 }
 
 .guardarComents:hover {

@@ -14,7 +14,7 @@ function Sedes (props) {
             onClick={
                 (event) => {
                     props.setAdressSelect(event.target.value);
-                  
+                    props.setIsActive(false);                 
                 }
             }
             />

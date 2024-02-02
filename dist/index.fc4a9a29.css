@@ -176,6 +176,7 @@ textarea:focus {
 }
 
 .guardarComents {
+  cursor: pointer;
   background: #fff;
   border: 1px solid #000;
   border-radius: 24px;
@@ -304,6 +305,29 @@ h3 {
   font-size: 16px;
   font-weight: 500;
   transition: all .2s ease-in;
+}
+
+.btn-siguiente {
+  padding: 14px 32px;
+  background: #426fcd !important;
+  border-style: none !important;
+  border-radius: 30px !important;
+  font-size: 18px !important;
+}
+
+.btn-siguiente:hover {
+  background: #4975d4 !important;
+}
+
+.popAlert {
+  border-radius: 30px;
+}
+
+.titlePopup {
+  color: #3c4449;
+  font-family: Neue montreal;
+  font-weight: 500;
+  font-size: 30px !important;
 }
 
 /*# sourceMappingURL=index.fc4a9a29.css.map */
