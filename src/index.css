@@ -21,7 +21,7 @@ code {
     gap: 0px;
 }
 
-.card {
+.cardComponent {
     padding: 24px 32px;
     border: 1px solid #e1e3e4;
     border-radius: 25px;
@@ -30,11 +30,11 @@ code {
     gap: 16px;
 }
 
-h3 {
+.title-card_component {
     font-family: 'Neue montreal';
     color: #3C4549;
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: 600;
+    font-size: 18px;
     margin: 0px;
 }
 
@@ -99,8 +99,14 @@ h3 {
     background: #4975d4!important;
 }
 
+.btn-siguiente:focus {
+    box-shadow: none!important;
+    border-style: none!important;
+}
+
 .popAlert {
     border-radius: 30px;
+    padding: 40px;
 }
 
 .titlePopup {
@@ -108,4 +114,39 @@ h3 {
     font-family: 'Neue montreal';
     font-weight: 500;
     color: #3C4449;
+    text-align: left;
+    line-height: 1.2em;
+}
+
+.titlePopup {
+    font-size: 30px!important;
+    font-family: 'Neue montreal';
+    font-weight: 500;
+    color: #3C4449;
+    text-align: center;
+    padding: 0;
+}
+
+.textpopup {
+    font-size: 18px!important;
+    font-family: 'Neue montreal';
+    font-weight: 400!important;
+    color: #3C4549;
+    text-align: left!important;
+    padding: 0px;
+    margin: 14px 0px 0px 0px!important;
+    line-height: 1.2em!important;
+}
+
+.clodeBtnBtn:hover {
+    color: #4975d4!important;
+    border-style: none!important;
+}
+
+.clodeBtnBtn:focus {
+    box-shadow: none;
+}
+
+div:where(.swal2-container) img:where(.swal2-image) {
+    margin: 0em auto 1em!important;
 }

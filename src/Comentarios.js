@@ -41,13 +41,13 @@ function Comentarios({
             <div 
             className='wrapp-tile-narrow'
             onClick={changeClass}>
-            <h3>Agregar comentarios <span>(Opcional)</span></h3>
+            <h3 className='title-card_component' >Agregar comentarios <span>(Opcional)</span></h3>
             <img 
             className={`imgArrow${toggleClassArrow}`}
             src={arrow}/>
             </div>
             <div className={`wrapp-input-text-area--hidde${toggleClass}`}>
-                <h3>{insertMesaje}</h3>
+                <h3 className='TextComment'>{insertMesaje}</h3>
                 <div className={`wrapp-inpitMesaje${changeclass}`} >
                 <textarea 
                 className='text-area-input'

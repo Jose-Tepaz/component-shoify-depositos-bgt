@@ -95,3 +95,14 @@ textarea:focus {
 .editBtn--hidde {
     display: none;
 }
+
+.TextComment {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Neue montreal';
+    font-size: 18px;
+    font-weight: 400;
+    width: 100%;
+    border-radius: 16px;
+    color: #3C4549;
+}

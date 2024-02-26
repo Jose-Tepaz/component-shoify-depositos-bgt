@@ -22,7 +22,7 @@ function SedesList (props) {
          </div >
 
             <div className={`${yesDirection}`} >
-                <h3>Dirección de depósito</h3>
+                <h3 className='title-card_component'>Dirección de depósito</h3>
                 <ul>
                     {props.children}
                 </ul>

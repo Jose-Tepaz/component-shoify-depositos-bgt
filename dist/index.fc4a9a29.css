@@ -57,7 +57,7 @@ input[type="radio"] {
   padding: 8px 16px 8px 48px;
   font-family: Neue montreal;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   display: flex;
 }
 
@@ -95,13 +95,6 @@ input:checked + span {
   justify-content: space-between;
   margin-bottom: 21px;
   display: flex;
-}
-
-.wrapp-head-total p {
-  margin: 0;
-  font-family: Neue montreal;
-  font-size: 16px;
-  font-weight: 500;
 }
 
 .BtnSend {
@@ -220,6 +213,17 @@ textarea:focus {
   display: none;
 }
 
+.TextComment {
+  color: #3c4549;
+  border-radius: 16px;
+  flex-direction: column;
+  width: 100%;
+  font-family: Neue montreal;
+  font-size: 18px;
+  font-weight: 400;
+  display: flex;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
 }
@@ -241,7 +245,7 @@ code {
   display: flex;
 }
 
-.card {
+.cardComponent {
   border: 1px solid #e1e3e4;
   border-radius: 25px;
   flex-direction: column;
@@ -250,12 +254,12 @@ code {
   display: flex;
 }
 
-h3 {
+.title-card_component {
   color: #3c4549;
   margin: 0;
   font-family: Neue montreal;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .nonInfo {
@@ -319,15 +323,49 @@ h3 {
   background: #4975d4 !important;
 }
 
+.btn-siguiente:focus {
+  box-shadow: none !important;
+  border-style: none !important;
+}
+
 .popAlert {
   border-radius: 30px;
+  padding: 40px;
 }
 
 .titlePopup {
   color: #3c4449;
+  text-align: left;
+  text-align: center;
+  padding: 0;
   font-family: Neue montreal;
   font-weight: 500;
+  line-height: 1.2em;
   font-size: 30px !important;
+}
+
+.textpopup {
+  color: #3c4549;
+  padding: 0;
+  font-family: Neue montreal;
+  text-align: left !important;
+  margin: 14px 0 0 !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 1.2em !important;
+}
+
+.clodeBtnBtn:hover {
+  color: #4975d4 !important;
+  border-style: none !important;
+}
+
+.clodeBtnBtn:focus {
+  box-shadow: none;
+}
+
+div:where(.swal2-container) img:where(.swal2-image) {
+  margin: 0 auto 1em !important;
 }
 
 /*# sourceMappingURL=index.fc4a9a29.css.map */

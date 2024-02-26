@@ -2989,11 +2989,8 @@ const App = ()=>{
         setDirecciones(arrayCliebte);
     });
     //ocultar al enviar a produccion
-    //const idDespotio = "123456789";
-    //const finalsend = "algo nuevo";
-    //const nombreDeProductoAPI = "algo nuevo";
-    //const skuDeProductoAPI = "algo nuevo";
-    //const cantidadDeProductoAPI = "algo nuevo";
+    const idDespotio = "123456789";
+    const finalsend = "algo nuevo";
     // !!--- Send POST data to Airtable ---!!
     async function enviandoDatos() {
         try {
@@ -3014,12 +3011,7 @@ const App = ()=>{
                                 "productos": `${finalsend}`,
                                 "Email": `${emailClienteApi}`,
                                 "RFC": `${rfcClienteApi}`,
-                                "emailTelemarketing": `${telemarketingClienteApi}`,
-                                "NameProduct": `${nombreDeProductoAPI}`,
-                                "SkuProduct": `${skuDeProductoAPI}`,
-                                "CantidadProduct": `${cantidadDeProductoAPI}`,
-                                "SolicitudPor": "Deposito",
-                                "Deposito": `${idDespotio}`
+                                "emailTelemarketing": `${telemarketingClienteApi}`
                             }
                         }
                     ],
@@ -3105,22 +3097,22 @@ const App = ()=>{
             className: "Wrapp-component",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "cardComponent",
+                    className: "card",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _comentarios.Comentarios), {
                         mesajeValue: mesajeValue,
                         setMesajeValue: setMesajeValue
                     }, void 0, false, {
                         fileName: "src/index.js",
-                        lineNumber: 192,
+                        lineNumber: 184,
                         columnNumber: 17
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/index.js",
-                    lineNumber: 191,
+                    lineNumber: 183,
                     columnNumber: 13
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "cardComponent",
+                    className: "card",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sedesList.SedesList), {
                         direcciones: direcciones,
                         setDirecciones: setDirecciones,
@@ -3132,32 +3124,32 @@ const App = ()=>{
                                 setAdressSelect: setAdressSelect
                             }, direccion, false, {
                                 fileName: "src/index.js",
-                                lineNumber: 201,
+                                lineNumber: 193,
                                 columnNumber: 37
                             }, undefined)) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                             className: "nonInfo",
                             children: " Introduce un ID de cliente para ver las direcciones disponibles "
                         }, void 0, false, {
                             fileName: "src/index.js",
-                            lineNumber: 209,
+                            lineNumber: 201,
                             columnNumber: 34
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/index.js",
-                        lineNumber: 198,
+                        lineNumber: 190,
                         columnNumber: 21
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/index.js",
-                    lineNumber: 195,
+                    lineNumber: 187,
                     columnNumber: 13
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "cardComponent",
+                    className: "card",
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _totalSend.TotalSend), {}, void 0, false, {
                             fileName: "src/index.js",
-                            lineNumber: 213,
+                            lineNumber: 205,
                             columnNumber: 37
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _antd.Button), {
@@ -3168,19 +3160,19 @@ const App = ()=>{
                             children: "Pedir Cotizaci\xf3n"
                         }, void 0, false, {
                             fileName: "src/index.js",
-                            lineNumber: 214,
+                            lineNumber: 206,
                             columnNumber: 37
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/index.js",
-                    lineNumber: 212,
+                    lineNumber: 204,
                     columnNumber: 25
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/index.js",
-            lineNumber: 188,
+            lineNumber: 180,
             columnNumber: 9
         }, undefined)
     }, void 0, false);
@@ -3189,7 +3181,7 @@ _s(App, "sBQTk732bMwUCrjPSFtKqrW2LpU=");
 _c = App;
 (0, _reactDomDefault.default).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/index.js",
-    lineNumber: 231,
+    lineNumber: 223,
     columnNumber: 18
 }, undefined), document.getElementById("root"));
 var _c;
@@ -39591,7 +39583,7 @@ parcelHelpers.export(exports, "TotalSend", ()=>TotalSend) // <button className='
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _totalSendCss = require("./TotalSend.css");
 // !!-- Se oculta al enviar a produccion --!
-//const totalsend = "5"
+const totalsend = "5";
 // !!--------------------------!!//
 function TotalSend() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -39713,7 +39705,6 @@ function Comentarios({ mesajeValue, setMesajeValue }) {
                 className: `wrapp-input-text-area--hidde${toggleClass}`,
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                        className: "TextComment",
                         children: insertMesaje
                     }, void 0, false, {
                         fileName: "src/Comentarios.js",
@@ -49582,7 +49573,7 @@ var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _micromatch = require("micromatch");
 //esto se oculta para mandar a produccion
-//const idDespotio = "846541694";
+const idDespotio = "846541694";
 const listDirecciones = async (state)=>{
     const peticion = await (0, _axiosDefault.default).get(`https://api.airtable.com/v0/appVwlmLP1164Ceku/tblgGAZYgdKhaKu7f?filterByFormula=Find(%22${idDespotio}%22%2C+IDcliente)`, {
         headers: {

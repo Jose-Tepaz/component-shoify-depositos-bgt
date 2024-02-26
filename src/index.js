@@ -57,10 +57,14 @@ const App = () => {
  //ocultar al enviar a produccion
     //const idDespotio = "123456789";
     //const finalsend = "algo nuevo";
+    //const nombreDeProductoAPI = "algo nuevo";
+    //const skuDeProductoAPI = "algo nuevo";
+    //const cantidadDeProductoAPI = "algo nuevo";
           
     // !!--- Send POST data to Airtable ---!!
     async function enviandoDatos() {
-        const response = await fetch('https://api.airtable.com/v0/appVwlmLP1164Ceku/tbl7q7V4X0euPXyyC', {
+        try {
+            const response = await fetch('https://api.airtable.com/v0/appVwlmLP1164Ceku/tbl7q7V4X0euPXyyC', {
             method: 'POST',
             headers: {
                 "Accept": "application/json",
@@ -77,12 +81,28 @@ const App = () => {
                         "Email": `${emailClienteApi}`,
                         "RFC": `${rfcClienteApi}`,
                         "emailTelemarketing": `${telemarketingClienteApi}`,
+                        "NameProduct": `${nombreDeProductoAPI}`,
+                        "SkuProduct": `${skuDeProductoAPI}`,
+                        "CantidadProduct": `${cantidadDeProductoAPI}`,
+                        "SolicitudPor": "Deposito",
+                        "Deposito": `${idDespotio}`,
                     }
                 }],
                 "typecast": true
             })
         });
-        //console.log(response);
+
+        if (response.status === 200) {
+            alertaSucces();
+            
+        } else {
+            alertaError();       
+        }    
+        } catch (error) {
+            console.log(error) 
+            
+        }
+    //console.log(response);
     }
 
     // !!--- End this script ---!! //
@@ -108,41 +128,71 @@ const App = () => {
             setLoadings((prevLoadings) => {
                 const newLoadings = [...prevLoadings];
                 newLoadings[index] = false;
-                //alert("Solicitud enviada con éxito...");
+                
                 enviandoDatos();
-                mostrarAlerta();
-                return newLoadings;
+                return newLoadings; 
             });
         }, 2000);
     };
 
     // !!--- END function to load BTN  ---!! //
     //modal de confirmación
-    const mostrarAlerta=()=>{
+    const alertaSucces=()=>{
         Swal.fire({
-        title: "Cotizacion solicitada con éxito",
-        icon: "success",
-        confirmButtonText: `Volver al inicio`,
+        title: "Solicitaste tu cotización",
+        html: "Te enviaremos una copia de tu cotización a tu correo electrónico y nos comunicaremos contigo en un plazo de 3 días hábiles para confirmar todos los detalles.",
+        imageUrl: "https://cdn.shopify.com/s/files/1/0633/1459/1884/files/icon-done.svg?v=1706909092",
+      imageWidth: 60,
+      imageHeight: 60,
+      showCloseButton: true,
+      showConfirmButton: false,
+        
         customClass: {
-            confirmButton: 'btn-siguiente',
             popup: 'popAlert',
             title: 'titlePopup',
+            htmlContainer: 'textpopup',
+            closeButton: 'clodeBtnBtn'
+    
         }
     }).then((result) => {
         window.location = '/';
     });
     }
+
+    //modal de error
+const alertaError=()=>{
+    Swal.fire({
+    title: "No pudimos solicitar tu cotización",
+    html: "Lo sentimos, pero algo ha salido mal al procesar tu solicitud. Por favor, verifica tu conexión a internet e inténtalo de nuevo.",
+    imageUrl: "https://cdn.shopify.com/s/files/1/0633/1459/1884/files/icon-error.svg?v=1706911874",
+  imageWidth: 60,
+  imageHeight: 60,
+  showCloseButton: true,
+  confirmButtonText: `Volver a intentarlo`,
+    customClass: {
+        popup: 'popAlert',
+        confirmButton: 'btn-siguiente',
+        title: 'titlePopup',
+        htmlContainer: 'textpopup',
+        closeButton: 'clodeBtnBtn'
+
+    }
+}).then((result) => {
+    window.location = '/';
+});
+}
+
  
     return (
         <>
         <div className='Wrapp-component' >
 
 
-            <div className='card' >
+            <div className='cardComponent' >
                 <Comentarios mesajeValue={mesajeValue}
                  setMesajeValue={setMesajeValue}/>
             </div > 
-            <div className='card'>
+            <div className='cardComponent'>
 { /* wrapp a list of address */}
 
                     <SedesList direcciones={direcciones}
@@ -159,7 +209,7 @@ const App = () => {
                             ) : (<p className='nonInfo'> Introduce un ID de cliente para ver las direcciones disponibles </p>) }                               
                         </SedesList> 
                         </div> 
-                        <div className='card'>
+                        <div className='cardComponent'>
                                     <TotalSend />
                                     <Button
                                         type="primary"

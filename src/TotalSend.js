@@ -8,8 +8,8 @@ function TotalSend () {
     return (
         <div>
             <div className='wrapp-head-total'>
-            <p>Total a cotizar </p>
-            <p>{totalsend} productos</p>
+            <p className='title-card_component'>Total a cotizar </p>
+            <p className='title-card_component'>{totalsend} productos</p>
             </div>
             
         </div>
