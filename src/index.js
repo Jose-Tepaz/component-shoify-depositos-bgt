@@ -54,12 +54,13 @@ const App = () => {
 }), [clientSelect]
 
 
+
  //ocultar al enviar a produccion
-    //const idDespotio = "123456789";
-    //const finalsend = "algo nuevo";
-    //const nombreDeProductoAPI = "algo nuevo";
-    //const skuDeProductoAPI = "algo nuevo";
-    //const cantidadDeProductoAPI = "algo nuevo";
+   // const idDespotio = "123456789";
+   // const finalsend = "algo nuevo";
+   // const nombreDeProductoAPI = "algo nuevo";
+   // const skuDeProductoAPI = "algo nuevo";
+   // const cantidadDeProductoAPI = "algo nuevo";
           
     // !!--- Send POST data to Airtable ---!!
     async function enviandoDatos() {
@@ -107,13 +108,62 @@ const App = () => {
 
     // !!--- End this script ---!! //
 
+    //verifica si tenemos conección
+useEffect(() => {
+    if(navigator.onLine) {
+        console.log("estamos en linea")
+    } else {
+        alertaError();
+    }
+
+});
+
+
+// ------- Create order on shopify -------- //
+//const idCleintShopify = "6229750644876";
+//////const arrayobjord = [{"variant_id": 42166325117068, "quantity": 1}];
+//const arrayobjord = {"variant_id": 42166325117068, "quantity": 1};
+////
+////const parcejso = JSON.stringify(arrayobjord);
+//
+////console.log(arraytostring)
+//
+//    async function orderCreate() {
+//        try {
+//            const response = await fetch('https://jjwziobkfb.execute-api.us-east-1.amazonaws.com/dev/neworder', {
+//            method: 'POST',
+//            headers: {
+//                "Accept": "application/json",
+//                'Content-Type': 'application/json',   
+//            },
+//            body: JSON.stringify({
+//                "order":{
+//                    "line_items":[ `${arrayobjord}` ],   
+//                    "customer":{
+//                        "id": `${idCleintShopify}`
+//                    },
+//                    "financial_status":"pending"
+//                }
+//                }),
+//            
+//            
+//        });
+//
+//        const data = await response.json();
+//        console.log(data);
+//    } catch (error) {
+//        console.log(error) 
+//        
+//    }
+//                    //console.log(response);
+//    }; 
+//    //---------end order shopify ---------///
+
+
     
     useEffect(() => {
         listDirecciones(setClientSelect);
     });
-
-    
-
 
     // !!--- function to load BTN  ---!! //
     const [loadings, setLoadings] = useState([]);
@@ -128,8 +178,9 @@ const App = () => {
             setLoadings((prevLoadings) => {
                 const newLoadings = [...prevLoadings];
                 newLoadings[index] = false;
-                
+                orderCreate();
                 enviandoDatos();
+                
                 return newLoadings; 
             });
         }, 2000);
@@ -137,7 +188,7 @@ const App = () => {
 
     // !!--- END function to load BTN  ---!! //
     //modal de confirmación
-    const alertaSucces=()=>{
+    const   alertaSucces=()=>{
         Swal.fire({
         title: "Solicitaste tu cotización",
         html: "Te enviaremos una copia de tu cotización a tu correo electrónico y nos comunicaremos contigo en un plazo de 3 días hábiles para confirmar todos los detalles.",
@@ -155,7 +206,11 @@ const App = () => {
     
         }
     }).then((result) => {
-        window.location = '/';
+        window.location = '/cart/clear';
+
+        setTimeout(function(){
+            window.location = '/';
+        }, 1000);
     });
     }
 
@@ -178,7 +233,7 @@ const alertaError=()=>{
 
     }
 }).then((result) => {
-    window.location = '/';
+    location.reload();
 });
 }
 

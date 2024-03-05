@@ -2989,11 +2989,11 @@ const App = ()=>{
         setDirecciones(arrayCliebte);
     });
     //ocultar al enviar a produccion
-    //const idDespotio = "123456789";
-    //const finalsend = "algo nuevo";
-    //const nombreDeProductoAPI = "algo nuevo";
-    //const skuDeProductoAPI = "algo nuevo";
-    //const cantidadDeProductoAPI = "algo nuevo";
+    // const idDespotio = "123456789";
+    // const finalsend = "algo nuevo";
+    // const nombreDeProductoAPI = "algo nuevo";
+    // const skuDeProductoAPI = "algo nuevo";
+    // const cantidadDeProductoAPI = "algo nuevo";
     // !!--- Send POST data to Airtable ---!!
     async function enviandoDatos() {
         try {
@@ -3034,6 +3034,50 @@ const App = ()=>{
     //console.log(response);
     }
     // !!--- End this script ---!! //
+    //verifica si tenemos conección
+    (0, _react.useEffect)(()=>{
+        if (navigator.onLine) console.log("estamos en linea");
+        else alertaError();
+    });
+    // ------- Create order on shopify -------- //
+    //const idCleintShopify = "6229750644876";
+    //////const arrayobjord = [{"variant_id": 42166325117068, "quantity": 1}];
+    //const arrayobjord = {"variant_id": 42166325117068, "quantity": 1};
+    ////
+    ////const parcejso = JSON.stringify(arrayobjord);
+    //
+    ////console.log(arraytostring)
+    //
+    //    async function orderCreate() {
+    //        try {
+    //            const response = await fetch('https://jjwziobkfb.execute-api.us-east-1.amazonaws.com/dev/neworder', {
+    //            method: 'POST',
+    //            headers: {
+    //                "Accept": "application/json",
+    //                'Content-Type': 'application/json',   
+    //            },
+    //            body: JSON.stringify({
+    //                "order":{
+    //                    "line_items":[ `${arrayobjord}` ],   
+    //                    "customer":{
+    //                        "id": `${idCleintShopify}`
+    //                    },
+    //                    "financial_status":"pending"
+    //                }
+    //                }),
+    //            
+    //            
+    //        });
+    //
+    //        const data = await response.json();
+    //        console.log(data);
+    //    } catch (error) {
+    //        console.log(error) 
+    //        
+    //    }
+    //                    //console.log(response);
+    //    }; 
+    //    //---------end order shopify ---------///
     (0, _react.useEffect)(()=>{
         (0, _apicalldepositos.listDirecciones)(setClientSelect);
     });
@@ -3053,6 +3097,7 @@ const App = ()=>{
                     ...prevLoadings
                 ];
                 newLoadings[index] = false;
+                orderCreate();
                 enviandoDatos();
                 return newLoadings;
             });
@@ -3076,7 +3121,10 @@ const App = ()=>{
                 closeButton: "clodeBtnBtn"
             }
         }).then((result)=>{
-            window.location = "/";
+            window.location = "/cart/clear";
+            setTimeout(function() {
+                window.location = "/";
+            }, 1000);
         });
     };
     //modal de error
@@ -3097,7 +3145,7 @@ const App = ()=>{
                 closeButton: "clodeBtnBtn"
             }
         }).then((result)=>{
-            window.location = "/";
+            location.reload();
         });
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -3111,12 +3159,12 @@ const App = ()=>{
                         setMesajeValue: setMesajeValue
                     }, void 0, false, {
                         fileName: "src/index.js",
-                        lineNumber: 192,
+                        lineNumber: 247,
                         columnNumber: 17
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/index.js",
-                    lineNumber: 191,
+                    lineNumber: 246,
                     columnNumber: 13
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -3132,24 +3180,24 @@ const App = ()=>{
                                 setAdressSelect: setAdressSelect
                             }, direccion, false, {
                                 fileName: "src/index.js",
-                                lineNumber: 201,
+                                lineNumber: 256,
                                 columnNumber: 37
                             }, undefined)) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                             className: "nonInfo",
                             children: " Introduce un ID de cliente para ver las direcciones disponibles "
                         }, void 0, false, {
                             fileName: "src/index.js",
-                            lineNumber: 209,
+                            lineNumber: 264,
                             columnNumber: 34
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/index.js",
-                        lineNumber: 198,
+                        lineNumber: 253,
                         columnNumber: 21
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/index.js",
-                    lineNumber: 195,
+                    lineNumber: 250,
                     columnNumber: 13
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -3157,7 +3205,7 @@ const App = ()=>{
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _totalSend.TotalSend), {}, void 0, false, {
                             fileName: "src/index.js",
-                            lineNumber: 213,
+                            lineNumber: 268,
                             columnNumber: 37
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _antd.Button), {
@@ -3168,28 +3216,28 @@ const App = ()=>{
                             children: "Pedir Cotizaci\xf3n"
                         }, void 0, false, {
                             fileName: "src/index.js",
-                            lineNumber: 214,
+                            lineNumber: 269,
                             columnNumber: 37
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/index.js",
-                    lineNumber: 212,
+                    lineNumber: 267,
                     columnNumber: 25
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/index.js",
-            lineNumber: 188,
+            lineNumber: 243,
             columnNumber: 9
         }, undefined)
     }, void 0, false);
 };
-_s(App, "sBQTk732bMwUCrjPSFtKqrW2LpU=");
+_s(App, "8s8Q7eg4jbc5bq8+xhkAlvyhgyU=");
 _c = App;
 (0, _reactDomDefault.default).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/index.js",
-    lineNumber: 231,
+    lineNumber: 286,
     columnNumber: 18
 }, undefined), document.getElementById("root"));
 var _c;
