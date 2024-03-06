@@ -1,7 +1,7 @@
 import './TotalSend.css';
 
 // !!-- Se oculta al enviar a produccion --!
-//const totalsend = "5"
+const totalsend = "5"
 // !!--------------------------!!//
 
 function TotalSend () {

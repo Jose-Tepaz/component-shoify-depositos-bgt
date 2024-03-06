@@ -56,11 +56,11 @@ const App = () => {
 
 
  //ocultar al enviar a produccion
-   // const idDespotio = "123456789";
-   // const finalsend = "algo nuevo";
-   // const nombreDeProductoAPI = "algo nuevo";
-   // const skuDeProductoAPI = "algo nuevo";
-   // const cantidadDeProductoAPI = "algo nuevo";
+    const idDespotio = "123456789";
+    const finalsend = "algo nuevo";
+    const nombreDeProductoAPI = "algo nuevo";
+    const skuDeProductoAPI = "algo nuevo";
+    const cantidadDeProductoAPI = "algo nuevo";
           
     // !!--- Send POST data to Airtable ---!!
     async function enviandoDatos() {
@@ -178,7 +178,7 @@ useEffect(() => {
             setLoadings((prevLoadings) => {
                 const newLoadings = [...prevLoadings];
                 newLoadings[index] = false;
-                orderCreate();
+                //orderCreate();
                 enviandoDatos();
                 
                 return newLoadings; 
@@ -196,19 +196,31 @@ useEffect(() => {
       imageWidth: 60,
       imageHeight: 60,
       showCloseButton: true,
-      showConfirmButton: false,
+      //showConfirmButton: false,
+      confirmButtonText: `Volver al inicio`,
         
         customClass: {
             popup: 'popAlert',
             title: 'titlePopup',
+            confirmButton: 'btn-siguiente',
             htmlContainer: 'textpopup',
             closeButton: 'clodeBtnBtn'
     
         }
     }).then((result) => {
-        window.location = '/cart/clear';
-
+        
+        function testCallBack() {
+            console.log('log before use setTimeout function');
+            setTimeout(() => {
+              console.log('inside timeout');
+            }, 5000);
+            console.log('log after use setTimeout function');
+          }
+          
+          testCallBack();
+          
         setTimeout(function(){
+            window.location = '/cart/clear';
             window.location = '/';
         }, 1000);
     });
