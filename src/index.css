@@ -95,6 +95,23 @@ code {
     border-style: none!important;
 }
 
+.clear-cart {
+    background: #426fcd!important;
+    padding: 14px 32px;
+    border-radius: 30px!important;
+    font-size: 18px!important;
+    border-style: none!important;
+}
+
+.clear-cart:focus {
+    box-shadow: none!important;
+    border-style: none!important;
+}
+
+.clear-cart:hover {
+    background: #4975d4!important;
+}
+
 .btn-siguiente:hover {
     background: #4975d4!important;
 }

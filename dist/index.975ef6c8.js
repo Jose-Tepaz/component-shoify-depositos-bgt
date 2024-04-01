@@ -2989,11 +2989,11 @@ const App = ()=>{
         setDirecciones(arrayCliebte);
     });
     //ocultar al enviar a produccion
-    const idDespotio = "123456789";
-    const finalsend = "algo nuevo";
-    const nombreDeProductoAPI = "algo nuevo";
-    const skuDeProductoAPI = "algo nuevo";
-    const cantidadDeProductoAPI = "algo nuevo";
+    //const idDespotio = "123456789";
+    //const finalsend = "algo nuevo";
+    //const nombreDeProductoAPI = "algo nuevo";
+    //const skuDeProductoAPI = "algo nuevo";
+    //const cantidadDeProductoAPI = "algo nuevo";
     // !!--- Send POST data to Airtable ---!!
     async function enviandoDatos() {
         try {
@@ -3097,7 +3097,7 @@ const App = ()=>{
                     ...prevLoadings
                 ];
                 newLoadings[index] = false;
-                //orderCreate();
+                orderCreate();
                 enviandoDatos();
                 return newLoadings;
             });
@@ -3118,23 +3118,10 @@ const App = ()=>{
             customClass: {
                 popup: "popAlert",
                 title: "titlePopup",
-                confirmButton: "btn-siguiente",
+                confirmButton: "clear-cart",
                 htmlContainer: "textpopup",
                 closeButton: "clodeBtnBtn"
             }
-        }).then((result)=>{
-            function testCallBack() {
-                console.log("log before use setTimeout function");
-                setTimeout(()=>{
-                    console.log("inside timeout");
-                }, 5000);
-                console.log("log after use setTimeout function");
-            }
-            testCallBack();
-            setTimeout(function() {
-                window.location = "/cart/clear";
-                window.location = "/";
-            }, 1000);
         });
     };
     //modal de error
@@ -3169,12 +3156,12 @@ const App = ()=>{
                         setMesajeValue: setMesajeValue
                     }, void 0, false, {
                         fileName: "src/index.js",
-                        lineNumber: 259,
+                        lineNumber: 243,
                         columnNumber: 17
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/index.js",
-                    lineNumber: 258,
+                    lineNumber: 242,
                     columnNumber: 13
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -3190,24 +3177,24 @@ const App = ()=>{
                                 setAdressSelect: setAdressSelect
                             }, direccion, false, {
                                 fileName: "src/index.js",
-                                lineNumber: 268,
+                                lineNumber: 252,
                                 columnNumber: 37
                             }, undefined)) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                             className: "nonInfo",
                             children: " Introduce un ID de cliente para ver las direcciones disponibles "
                         }, void 0, false, {
                             fileName: "src/index.js",
-                            lineNumber: 276,
+                            lineNumber: 260,
                             columnNumber: 34
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/index.js",
-                        lineNumber: 265,
+                        lineNumber: 249,
                         columnNumber: 21
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/index.js",
-                    lineNumber: 262,
+                    lineNumber: 246,
                     columnNumber: 13
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -3215,7 +3202,7 @@ const App = ()=>{
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _totalSend.TotalSend), {}, void 0, false, {
                             fileName: "src/index.js",
-                            lineNumber: 280,
+                            lineNumber: 264,
                             columnNumber: 37
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _antd.Button), {
@@ -3226,19 +3213,19 @@ const App = ()=>{
                             children: "Pedir Cotizaci\xf3n"
                         }, void 0, false, {
                             fileName: "src/index.js",
-                            lineNumber: 281,
+                            lineNumber: 265,
                             columnNumber: 37
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/index.js",
-                    lineNumber: 279,
+                    lineNumber: 263,
                     columnNumber: 25
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/index.js",
-            lineNumber: 255,
+            lineNumber: 239,
             columnNumber: 9
         }, undefined)
     }, void 0, false);
@@ -3247,7 +3234,7 @@ _s(App, "8s8Q7eg4jbc5bq8+xhkAlvyhgyU=");
 _c = App;
 (0, _reactDomDefault.default).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/index.js",
-    lineNumber: 298,
+    lineNumber: 282,
     columnNumber: 18
 }, undefined), document.getElementById("root"));
 var _c;
@@ -39649,7 +39636,7 @@ parcelHelpers.export(exports, "TotalSend", ()=>TotalSend) // <button className='
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _totalSendCss = require("./TotalSend.css");
 // !!-- Se oculta al enviar a produccion --!
-const totalsend = "5";
+//const totalsend = "5"
 // !!--------------------------!!//
 function TotalSend() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -49640,7 +49627,7 @@ var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _micromatch = require("micromatch");
 //esto se oculta para mandar a produccion
-const idDespotio = "846541694";
+//const idDespotio = "846541694";
 const listDirecciones = async (state)=>{
     const peticion = await (0, _axiosDefault.default).get(`https://api.airtable.com/v0/appVwlmLP1164Ceku/tblgGAZYgdKhaKu7f?filterByFormula=Find(%22${idDespotio}%22%2C+IDcliente)`, {
         headers: {

@@ -311,7 +311,7 @@ code {
   transition: all .2s ease-in;
 }
 
-.btn-siguiente {
+.btn-siguiente, .clear-cart {
   padding: 14px 32px;
   background: #426fcd !important;
   border-style: none !important;
@@ -319,7 +319,12 @@ code {
   font-size: 18px !important;
 }
 
-.btn-siguiente:hover {
+.clear-cart:focus {
+  box-shadow: none !important;
+  border-style: none !important;
+}
+
+.clear-cart:hover, .btn-siguiente:hover {
   background: #4975d4 !important;
 }
 

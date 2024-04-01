@@ -56,11 +56,11 @@ const App = () => {
 
 
  //ocultar al enviar a produccion
-    const idDespotio = "123456789";
-    const finalsend = "algo nuevo";
-    const nombreDeProductoAPI = "algo nuevo";
-    const skuDeProductoAPI = "algo nuevo";
-    const cantidadDeProductoAPI = "algo nuevo";
+    //const idDespotio = "123456789";
+    //const finalsend = "algo nuevo";
+    //const nombreDeProductoAPI = "algo nuevo";
+    //const skuDeProductoAPI = "algo nuevo";
+    //const cantidadDeProductoAPI = "algo nuevo";
           
     // !!--- Send POST data to Airtable ---!!
     async function enviandoDatos() {
@@ -178,7 +178,7 @@ useEffect(() => {
             setLoadings((prevLoadings) => {
                 const newLoadings = [...prevLoadings];
                 newLoadings[index] = false;
-                //orderCreate();
+                orderCreate();
                 enviandoDatos();
                 
                 return newLoadings; 
@@ -191,7 +191,7 @@ useEffect(() => {
     const   alertaSucces=()=>{
         Swal.fire({
         title: "Solicitaste tu cotización",
-        html: "Te enviaremos una copia de tu cotización a tu correo electrónico y nos comunicaremos contigo en un plazo de 3 días hábiles para confirmar todos los detalles.",
+        html: "Te enviaremos una copia de tu cotización a tu correo electrónico y nos comunicaremos contigo a la brevedad para confirmar todos los detalles.",
         imageUrl: "https://cdn.shopify.com/s/files/1/0633/1459/1884/files/icon-done.svg?v=1706909092",
       imageWidth: 60,
       imageHeight: 60,
@@ -202,28 +202,24 @@ useEffect(() => {
         customClass: {
             popup: 'popAlert',
             title: 'titlePopup',
-            confirmButton: 'btn-siguiente',
+            confirmButton: 'clear-cart',
             htmlContainer: 'textpopup',
             closeButton: 'clodeBtnBtn'
     
         }
-    }).then((result) => {
-        
-        function testCallBack() {
-            console.log('log before use setTimeout function');
-            setTimeout(() => {
-              console.log('inside timeout');
-            }, 5000);
-            console.log('log after use setTimeout function');
-          }
-          
-          testCallBack();
-          
-        setTimeout(function(){
-            window.location = '/cart/clear';
-            window.location = '/';
-        }, 1000);
-    });
+        }).then((result) => {
+            function clearMyCart () {
+                $.ajax({
+                    type: "POST",
+                    url: '/cart/clear.js',
+                    success: function(){
+                      window.location.href = "/";
+                    },
+                    dataType: 'json'
+                  }); 
+              }
+              clearMyCart ();
+        });
     }
 
     //modal de error
