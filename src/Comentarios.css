@@ -4,6 +4,7 @@
     justify-content: space-between;
     cursor: pointer;
     align-items: center;
+    padding: 10px 0px;
 }
 
 .imgArrow {
@@ -36,7 +37,7 @@
 }
 
 .text-area-input {
-    width: 100%;
+    width: auto;
     border: 1.5px solid #D9D9D9;
     border-radius: 12px;
     padding: 8px 12px;
@@ -44,6 +45,7 @@
     font-size: 18px;
     color: #757575;
     letter-spacing: 2%;
+    line-height: 1.2em;
 }
 
 textarea:focus {
@@ -51,7 +53,14 @@ textarea:focus {
     border: 1.5px solid #426fcd;
 }
 
-.guardarComents {
+.wrapp-btns-comentas {
+    margin-top: 16px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.guardarComentsBtn {
     padding: 8px 16px;
     border-radius: 24px;
     border: 1px solid #000;
@@ -59,10 +68,10 @@ textarea:focus {
     font-family: Neue Montreal;
     font-size: 16px;
     font-style: normal;
-    font-weight: 500;
-    margin-top: 10px;
-    transition: 200ms ease-in;
+    font-weight: bolder;
     cursor: pointer;
+    transition: 200ms ease-in;
+    line-height: 1.2em;
 }
 
 .guardarComents:hover {
@@ -70,10 +79,23 @@ textarea:focus {
     color: #426fcd;
 }
 
+.btnLinkOnly {
+    padding: 8px 16px;
+    background: transparent;
+    border-style: none;
+    font-family: Neue Montreal;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: bolder;
+    margin-top: 10px;
+    color: #1C83E3;
+    line-height: 1.2em;
+}
+
 .wrapp-inpitMesaje {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .wrapp-inpitMesaje--hide {
@@ -86,10 +108,11 @@ textarea:focus {
     font-family: "Neue Montreal";
     font-size: 16px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: bolder;
     line-height: normal;
     cursor: pointer;
     margin-top: 24px;
+    line-height: 1.2em;
 }
 
 .editBtn--hidde {
@@ -105,4 +128,150 @@ textarea:focus {
     width: 100%;
     border-radius: 16px;
     color: #3C4549;
+    line-height: 1.2em;
+}
+
+.wrapp-select-sku {
+    width: 100%;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.wrapp-all-component-select {
+    position: relative;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.wrapp-select-textArea {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.wrapp-select {
+    width: auto;
+    border: 1px solid #ccc;
+    padding: 12px 16px;
+    border-radius: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Neue montreal';
+    font-size: 18px;
+    color: #3C4549;
+    line-height: 1.2em;
+}
+
+.options-select {
+    position: relative;
+    top: 12px;
+    left: 0;
+    width: 100%;
+    border-radius: 16px;
+    max-height: 160px;
+    overflow-y: auto;
+    background: #fff;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-Index: 1;
+    font-family: 'Neue montreal';
+    font-size: 18px;
+    color: #3C4549;
+    box-shadow: 0px 0px 8px 0px #A1A1A11A;
+    line-height: 1.2em;
+}
+
+.options-select::-webkit-scrollbar {
+    width: 8px;
+}
+
+.options-select::-webkit-scrollbar-track {
+    background: #fff;
+    padding: 1px;
+}
+
+.options-select::-webkit-scrollbar-thumb {
+    background-color: #C1C1C1;
+    border-radius: 20px;
+    width: 6px!important;
+}
+
+.options-select li {
+    padding: 15px 17px;
+    cursor: pointer;
+}
+
+.options-select li:hover {
+    background: #F5F5F5!important;
+}
+
+.list-coments {
+    list-style: none;
+    padding: 0px;
+    font-family: 'Neue montreal';
+    font-size: 18px;
+    margin: 0px;
+    color: #3C4549;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.cardComentAdded {
+    padding: 8px 8px;
+    display: flex;
+    align-items: center;
+    font-family: 'Neue montreal';
+    font-weight: 400;
+    font-size: 18px;
+    border-bottom: solid 1px #D9D9D9;
+    color: #3C4549;
+    border-radius: 4px;
+    transition: 0.5s;
+    stroke: #C8C8C8;
+    line-height: 1.2em;
+}
+
+.cardComentAdded:hover {
+    background: #F5F6FD;
+    stroke: #426FCD;
+}
+
+.element-coment {
+    display: flex;
+    gap: 8px;
+}
+
+.disabled {
+    pointer-events: none!important;
+    color: #fff;
+}
+
+.closeBtn {
+    background: #fff!important;
+    border-radius: 50px!important;
+    padding: 15px 32px;
+    color: #426FCD!important;
+    font-size: 18px!important;
+    font-family: 'Neue montreal'!important;
+    font-weight: 500!important;
+}
+
+.confirmBtn {
+    background: #426FCD!important;
+    border-radius: 50px!important;
+    font-size: 18px!important;
+    padding: 15px 32px;
+    font-weight: 500!important;
+    line-height: 1.2em;
+}
+
+.confirmBtn:focus {
+    box-shadow: none!important;
+    border-style: none!important;
 }

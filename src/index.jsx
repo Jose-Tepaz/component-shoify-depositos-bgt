@@ -4,6 +4,7 @@ import { Sedes } from './Sedes';
 import { SedesList } from './SedesList';
 import { TotalSend } from './TotalSend';
 import { Comentarios } from './Comentarios';
+import { Comentario2} from './Comentario2';
 import { listDespostos } from './apicallasesores';
 import { listDirecciones } from './apicalldepositos'
 import { sendData } from './sendedata';
@@ -29,8 +30,27 @@ const App = () => {
     //console.log(direcciones);
 
     //Mesaje value
-    const [mesajeValue, setMesajeValue] = React.useState("No hay comentarios");
+    const [mesajeValue, setMesajeValue] = React.useState([]);
     //console.log(mesajeValue);
+
+
+    const listadeComenatios = mesajeValue.map((lista) => (
+        `<li> ${lista.sku}: ${lista.comment} </li>` 
+    ))
+        
+    //seteando comentario
+    const convirtiendoaStringComentario = listadeComenatios.toString();
+    const stgNoComa = convirtiendoaStringComentario.split(",").join('');
+    const completeComent = mesajeValue <= 0 ? "No hay comentaios" :`<ul style="padding: 2px;margin:0px;"> ${stgNoComa} </ul>`;
+    
+    useEffect(() => { 
+        
+       
+        console.log(completeComent)
+       
+        
+
+      }, [mesajeValue])
 
     const [searchValue, setSearchValue] = React.useState(null);
     //console.log('Este es el valor ' + searchValue);
@@ -56,7 +76,7 @@ const App = () => {
 
 
  //ocultar al enviar a produccion
-    //const idDespotio = "123456789";
+    //const idDespotio = "D-123574654";
     //const finalsend = "algo nuevo";
     //const nombreDeProductoAPI = "algo nuevo";
     //const skuDeProductoAPI = "algo nuevo";
@@ -77,7 +97,7 @@ const App = () => {
                     "fields": {
                         "Idcliente": `${idDespotio}`,
                         "DireccionDeposito": `${adressSelect}`,
-                        "Comentario": `${mesajeValue}`,
+                        "Comentario": `${completeComent}`,
                         "productos": `${finalsend}`,
                         "Email": `${emailClienteApi}`,
                         "RFC": `${rfcClienteApi}`,
@@ -119,47 +139,6 @@ useEffect(() => {
 });
 
 
-// ------- Create order on shopify -------- //
-//const idCleintShopify = "6229750644876";
-//////const arrayobjord = [{"variant_id": 42166325117068, "quantity": 1}];
-//const arrayobjord = {"variant_id": 42166325117068, "quantity": 1};
-////
-////const parcejso = JSON.stringify(arrayobjord);
-//
-////console.log(arraytostring)
-//
-//    async function orderCreate() {
-//        try {
-//            const response = await fetch('https://jjwziobkfb.execute-api.us-east-1.amazonaws.com/dev/neworder', {
-//            method: 'POST',
-//            headers: {
-//                "Accept": "application/json",
-//                'Content-Type': 'application/json',   
-//            },
-//            body: JSON.stringify({
-//                "order":{
-//                    "line_items":[ `${arrayobjord}` ],   
-//                    "customer":{
-//                        "id": `${idCleintShopify}`
-//                    },
-//                    "financial_status":"pending"
-//                }
-//                }),
-//            
-//            
-//        });
-//
-//        const data = await response.json();
-//        console.log(data);
-//    } catch (error) {
-//        console.log(error) 
-//        
-//    }
-//                    //console.log(response);
-//    }; 
-//    //---------end order shopify ---------///
-
-
     
     useEffect(() => {
         listDirecciones(setClientSelect);
@@ -178,7 +157,7 @@ useEffect(() => {
             setLoadings((prevLoadings) => {
                 const newLoadings = [...prevLoadings];
                 newLoadings[index] = false;
-                orderCreate();
+                orderCreate(); //crear la orden en shopify
                 enviandoDatos();
                 
                 return newLoadings; 
@@ -252,8 +231,11 @@ const alertaError=()=>{
 
 
             <div className='cardComponent' >
-                <Comentarios mesajeValue={mesajeValue}
-                 setMesajeValue={setMesajeValue}/>
+            <Comentario2 
+                mesajeValue={mesajeValue}
+                setMesajeValue={setMesajeValue} 
+                />
+                
             </div > 
             <div className='cardComponent'>
 { /* wrapp a list of address */}
